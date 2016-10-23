@@ -17,7 +17,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestTemplate;
-import sheol.twichoffline.converter.FfmpegConvert;
 import sheol.twichoffline.grabber.VODCutterGrabber;
 
 import java.io.File;
@@ -34,11 +33,10 @@ import java.util.List;
 @PropertySource("classpath:app.properties")
 public class TwitchOffline implements CommandLineRunner {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(TwitchOffline.class);
-    public static final String VIDEOS_TXT = "videos.txt";
-
+    private static final String VIDEOS_TXT = "videos.txt";
+    private static final Logger LOGGER = LoggerFactory.getLogger(TwitchOffline.class);
     @Autowired
-    VODCutterGrabber vodCutterGrabber;
+    private VODCutterGrabber vodCutterGrabber;
 
     public static void main(String[] args) {
         LOGGER.info("Started TwitchOffline");
@@ -73,12 +71,12 @@ public class TwitchOffline implements CommandLineRunner {
                 videos.addAll(FileUtils.readLines(videosFile, "UTF-8"));
             }
         } else {
-            videos.addAll(CollectionUtils.arrayToList(strings));
+            videos.addAll(CollectionUtils.<String>arrayToList(strings));
         }
 
         videos.forEach(v -> {
             LOGGER.info("Handling video with id [{}]", v);
-            //String downloadfile = vodCutterGrabber.downloadVideo(v);
+            vodCutterGrabber.downloadVideo(v);
             //FfmpegConvert.convert(downloadfile);
         });
     }
