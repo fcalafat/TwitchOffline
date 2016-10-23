@@ -63,10 +63,12 @@ public class TwitchOffline implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
         List<String> videos = new ArrayList<>();
+
+        File videosFile = new File(VIDEOS_TXT);
+
         if(strings.length == 0) {
             LOGGER.info("Reading video IDs from {} file", VIDEOS_TXT);
             // read from txt file
-            File videosFile = new File(VIDEOS_TXT);
             if(videosFile.exists()) {
                 videos.addAll(FileUtils.readLines(videosFile, "UTF-8"));
             }
@@ -79,5 +81,8 @@ public class TwitchOffline implements CommandLineRunner {
             vodCutterGrabber.downloadVideo(v);
             //FfmpegConvert.convert(downloadfile);
         });
+
+        // Clean up videos.txt
+        FileUtils.deleteQuietly(videosFile);
     }
 }
