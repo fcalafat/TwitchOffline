@@ -1,51 +1,51 @@
 
-package sheol.twichoffline.twitch.pojo;
+package sheol.twitchoffline.twitch.pojo;
 
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
 
 @Generated("org.jsonschema2pojo")
-public class Thumbnail {
+public class Links_ {
 
-    private String url;
-    private String type;
+    private String self;
+    private String channel;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      * 
      * @return
-     *     The url
+     *     The self
      */
-    public String getUrl() {
-        return url;
+    public String getSelf() {
+        return self;
     }
 
     /**
      * 
-     * @param url
-     *     The url
+     * @param self
+     *     The self
      */
-    public void setUrl(String url) {
-        this.url = url;
+    public void setSelf(String self) {
+        this.self = self;
     }
 
     /**
      * 
      * @return
-     *     The type
+     *     The channel
      */
-    public String getType() {
-        return type;
+    public String getChannel() {
+        return channel;
     }
 
     /**
      * 
-     * @param type
-     *     The type
+     * @param channel
+     *     The channel
      */
-    public void setType(String type) {
-        this.type = type;
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 
     public Map<String, Object> getAdditionalProperties() {

@@ -1,9 +1,9 @@
 
-package sheol.twichoffline.twitch.pojo;
+package sheol.twitchoffline.twitch.pojo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import sheol.twichoffline.twitch.deserializer.DateDeserializer;
+import sheol.twitchoffline.twitch.deserializer.DateDeserializer;
 
 import java.util.*;
 

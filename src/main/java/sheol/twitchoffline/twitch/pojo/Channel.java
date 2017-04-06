@@ -1,5 +1,5 @@
 
-package sheol.twichoffline.twitch.pojo;
+package sheol.twitchoffline.twitch.pojo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

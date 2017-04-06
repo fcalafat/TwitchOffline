@@ -1,4 +1,4 @@
-package sheol.twichoffline.converter;
+package sheol.twitchoffline.converter;
 
 import org.junit.Test;
 

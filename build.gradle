@@ -1,0 +1,50 @@
+plugins {
+    id 'org.springframework.boot' version '1.5.2.RELEASE'
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'sheol'
+version = '1.0-SNAPSHOT'
+
+description = ""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+jar.archiveName = "twitchoffline.jar"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+springBoot {
+    backupSource = false
+}
+
+bootRepackage {
+    mainClass = 'sheol.twitchoffline.TwitchOffline'
+    executable = true
+}
+
+dependencies {
+    compile 'org.springframework:spring-web:4.3.7.RELEASE'
+    compile(group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.5.2.RELEASE') {
+        exclude(module: 'commons-logging')
+    }
+    compile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.2.RELEASE') {
+        exclude(module: 'commons-logging')
+    }
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
+    compile group: 'commons-io', name: 'commons-io', version: '2.5'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.8.7'
+    compile group: 'io.mikael', name: 'urlbuilder', version: '2.0.7'
+
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}

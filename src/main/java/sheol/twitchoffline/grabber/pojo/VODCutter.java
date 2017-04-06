@@ -1,4 +1,4 @@
-package sheol.twichoffline.grabber.pojo;
+package sheol.twitchoffline.grabber.pojo;
 
 import java.util.Collections;
 import java.util.List;
@@ -33,8 +33,6 @@ public class VODCutter {
 
     @Override
     public String toString() {
-        return "VODCutter{" +
-                "pieces=" + pieces +
-                '}';
+        return "VODCutter for video #" + videoId + " contains " + pieces.size() + " pieces";
     }
 }

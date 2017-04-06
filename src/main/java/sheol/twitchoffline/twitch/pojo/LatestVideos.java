@@ -1,5 +1,5 @@
 
-package sheol.twichoffline.twitch.pojo;
+package sheol.twitchoffline.twitch.pojo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
