@@ -37,6 +37,7 @@ public class VODCutterGrabber {
 
     /**
      * Download a video from Twitch using the videoId
+     *
      * @param videoId
      * @param channel
      * @param fileName
@@ -52,6 +53,7 @@ public class VODCutterGrabber {
 
     /**
      * Using the details from VODCutter, create a folder and file and start downloading
+     *
      * @param vodCutter
      * @param channel
      * @param fileName
@@ -65,10 +67,10 @@ public class VODCutterGrabber {
             }
             ProgressIndicator progressIndicator = new ProgressIndicator(vodCutter.getPieces().size());
             // Eventually create the folder
-            if (outputFile.getParentFile().mkdirs()) {
-                vodCutter.getPieces().forEach(p -> downloadFile(p, outputFile, progressIndicator));
-                LOGGER.info("DONE");
-            }
+            outputFile.getParentFile().mkdirs();
+            vodCutter.getPieces().forEach(p -> downloadFile(p, outputFile, progressIndicator));
+            LOGGER.info("DONE");
+
         } catch (Exception e) {
             LOGGER.error("Cannot download video pieces", e);
         }
@@ -76,6 +78,7 @@ public class VODCutterGrabber {
 
     /**
      * Download a piece of video
+     *
      * @param pieceUrl
      * @param outputFile
      * @param progressIndicator
@@ -85,7 +88,7 @@ public class VODCutterGrabber {
             ResponseEntity<byte[]> response = restTemplate.exchange(
                     pieceUrl, HttpMethod.GET, httpEntity, byte[].class);
 
-            if(response.getStatusCode() != HttpStatus.OK) {
+            if (response.getStatusCode() != HttpStatus.OK) {
                 throw new HttpServerErrorException(response.getStatusCode(), response.toString());
             }
 
@@ -102,6 +105,7 @@ public class VODCutterGrabber {
 
     /**
      * Parse VODCutter response to get the pieces links
+     *
      * @param response
      * @return
      */
@@ -119,6 +123,7 @@ public class VODCutterGrabber {
 
     /**
      * Use the URL pattern to create the VODCutter link
+     *
      * @param videoId
      * @return
      */

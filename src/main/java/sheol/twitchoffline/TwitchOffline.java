@@ -127,6 +127,7 @@ public class TwitchOffline implements CommandLineRunner {
                 ".ts";
     }
 
+
     private boolean toGrab(File downloadedFile, Video video) {
         Date yesterday = DateUtils.addDays(new Date(), -1);
         return video.getPublishedAt().after(yesterday) && notDownloadedYet(downloadedFile, extractFileName(video));
